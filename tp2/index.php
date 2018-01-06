@@ -2,9 +2,14 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+        <link rel="stylesheet" href="style.css">
         <title>TP 2</title>
     </head>
     <body>
+        <div class="row">
+            <h1 class="col offset-s3 s6 center-align">TP 2</h1>
+        </div>
         <?php
         $nameRegex = '/^[A-Z]{1}[a-z]+$/';
         $ageRegex = '/[0-9]{1,}/';
@@ -20,41 +25,49 @@
         else
         {//sinon on affiche le formulaire
             ?>
-            <form method="post" action="index.php" role="form">
-                <fieldset>
-                    <legend>Votre identité</legend>
+            <div class="row">
+                <form method="post" action="index.php" role="form" class="col offset-s3 s6">
+                    <fieldset>
+                        <legend>Votre identité</legend>
                         <label for="civility">Civilité </label>
-                        <select class="form-control" id="select" name="civility">
-                            <option selected disabled>Choisissez votre civilité</option>
-                            <option value="Monsieur">Monsieur</option>
-                            <option value="Madame">Madame</option>
-                        </select>
-                    <div class="form-group">
-                        <label for="name">Nom </label>
-                        <div class="input-group">
-                            <input type="text" name="name" placeholder="Nom" required/>
+                        <div class="input-field">
+                            <select name="civility">
+                                <option value="" disabled selected>Choisissez votre genre</option>
+                                <option value="Mr">Mr</option>
+                                <option value="Madame">Madame</option>
+                            </select>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="firstName">Prénom </label>
-                        <div class="input-group">
-                            <input type="text" name="firstName" placeholder="Prénom" required/>
+                        <div class="intput-field">
+                            <label for="name">Nom </label>
+                            <div class="">
+                                <input type="text" name="name" placeholder="Nom" required/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="age">Quel âge avez-vous ? </label>
-                        <div class="input-group">
-                            <input type="text" name="age" placeholder="Votre âge ..." required/>
+                        <div class="intput-field">
+                            <label for="firstName">Prénom </label>
+                            <div class="">
+                                <input type="text" name="firstName" placeholder="Prénom" required/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="society">Avez vous déjà eu une expérience avec la programmation et/ou l'informatique avant de remplir ce formulaire ? </label>
-                        <div class="input-group">
-                            <input type="text" name="society" placeholder="Votre société ..." required/>
+                        <div class="intput-field">
+                            <label for="age">Quel âge avez-vous ? </label>
+                            <div class="">
+                                <input type="text" name="age" placeholder="Votre âge ..." required/>
+                            </div>
                         </div>
-                    </div>
-                    <input type="submit" value="Envoie"/>
-                </fieldset>
-            <?php } ?>
+                        <div class="intput-field">
+                            <label for="society">Dans quel société travaillez-vous ? </label>
+                            <div class="">
+                                <input type="text" name="society" placeholder="Votre société ..." required/>
+                            </div>
+                        </div>
+                        <input type="submit" value="Envoie"/>
+                    </fieldset>
+                </form>
+            </div>
+        <?php } ?>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+        <script src="script.js"></script>
     </body>
 </html>
