@@ -1,73 +1,67 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-        <link rel="stylesheet" href="style.css">
-        <title>TP 2</title>
-    </head>
-    <body>
-        <div class="row">
-            <h1 class="col offset-s3 s6 center-align">TP 2</h1>
-        </div>
-        <?php
-        $nameRegex = '/^[A-Z]{1}[a-z]+$/';
-        $ageRegex = '/[0-9]{1,}/';
-        // si on envoie le formulaire
-        if (!empty($_POST['name']) && !empty($_POST['firstName']) && !empty($_POST['civility']) && preg_match($nameRegex, $_POST['name']) && preg_match($nameRegex, $_POST['firstName']) && preg_match($nameRegex, $_POST['society']) && preg_match($ageRegex, $_POST['age']))
-        {// si les input ne sont pas vides et existent
-            ?>
-            <p><?php
-                echo 'Bonjour ' . strip_tags($_POST['civility']) . ' ' . strip_tags($_POST['firstName']) . ' ' . strip_tags($_POST['name']) . '. Vous avez ' . $_POST['age'] . ' ans et vous travaillez chez ' . $_POST['society'] . '.'; //on affiche les valeurs
-                ?>
-            </p><?php
-        }
-        else
-        {//sinon on affiche le formulaire
-            ?>
+  <head>
+    <title>TP 2</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <form action="index.php" method="POST" class="inscriptionForm">
             <div class="row">
-                <form method="post" action="index.php" role="form" class="col offset-s3 s6">
-                    <fieldset>
-                        <legend>Votre identité</legend>
-                        <label for="civility">Civilité </label>
-                        <div class="input-field">
-                            <select name="civility">
-                                <option value="" disabled selected>Choisissez votre genre</option>
-                                <option value="Mr">Mr</option>
-                                <option value="Madame">Madame</option>
-                            </select>
-                        </div>
-                        <div class="intput-field">
-                            <label for="name">Nom </label>
-                            <div class="">
-                                <input type="text" name="name" placeholder="Nom" required/>
-                            </div>
-                        </div>
-                        <div class="intput-field">
-                            <label for="firstName">Prénom </label>
-                            <div class="">
-                                <input type="text" name="firstName" placeholder="Prénom" required/>
-                            </div>
-                        </div>
-                        <div class="intput-field">
-                            <label for="age">Quel âge avez-vous ? </label>
-                            <div class="">
-                                <input type="text" name="age" placeholder="Votre âge ..." required/>
-                            </div>
-                        </div>
-                        <div class="intput-field">
-                            <label for="society">Dans quel société travaillez-vous ? </label>
-                            <div class="">
-                                <input type="text" name="society" placeholder="Votre société ..." required/>
-                            </div>
-                        </div>
-                        <input type="submit" value="Envoie"/>
-                    </fieldset>
-                </form>
+              <div class="col-lg-offset-6 col-lg-1">
+                <label for="civility">Civilité : </label>
+                <select class="civility" name="civility">
+                  <option value="Monsieur" <?= !empty($_POST['civility']) && $_POST['civility'] == 'Monsieur' ? 'selected' : ''; ?>>Monsieur</option>   
+                  <option value="Madame" <?= !empty($_POST['civility']) && $_POST['civility'] == 'Madame' ? 'selected' : ''; ?>>Madame</option>
+                </select>
+              </div>
             </div>
-        <?php } ?>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-        <script src="script.js"></script>
-    </body>
+            <div class="row">
+              <div class="form-group col-lg-offset-3 col-lg-3">
+                <label for="nom" class="h3">Votre nom : </label>
+                <input type="text" class="form-control" id="lastname"  value="<?= !empty($_POST['lastname']) ? $_POST['lastname'] : ''; ?>" placeholder="Nom" name="lastname" required />
+              </div>
+              <div class="form-group col-lg-4 col-lg-offset-1">
+                <label for="firstname" class="h3">Votre prénom : </label>
+                <input type="text" class="form-control" id="firstname" value="<?= !empty($_POST['firstname']) ? $_POST['firstname'] : ''; ?>" placeholder="Prénom" name="firstname" required />
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-lg-offset-3 col-lg-3">
+                <label for="age" class="h3">Votre âge : </label>
+                <input type="text" class="form-control" value="<?= !empty($_POST['age']) ? $_POST['age'] : ''; ?>" placeholder="Age" name="age" required />
+              </div>
+              <div class="form-group col-lg-4 col-lg-offset-1">
+                <label for="society" class="h3">Votre société : </label>
+                <input type="text" class="form-control" id="society" value="<?= !empty($_POST['corporation']) ? $_POST['corporation'] : ''; ?>" placeholder="Société" name="corporation" required />
+              </div>
+            </div>
+            <div class="row col-lg-offset-3 col-lg-5">
+              <button class="btn btn-primary" id="validate" type="submit" name="validate" class="validate">Valider</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row col-lg-offset-3">
+        <p id="text"><?php
+          if (!empty($_POST['lastname']) && !empty($_POST['firstname']) && !empty($_POST['civility']) && !empty($_POST['age']) && !empty($_POST['corporation'])) {
+              echo 'Bonjour ' . $_POST['civility'] . ' ' . $_POST['lastname'] . ' ' . $_POST['firstname'] . '. Tu as ' . $_POST['age'] . ' ans et ta société est : ' . $_POST['corporation'] . '.';
+          } else {
+              echo 'Oui';
+          }
+          ?></p>
+      </div>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="projet.js"></script>
 </html>

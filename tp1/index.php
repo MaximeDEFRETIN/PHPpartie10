@@ -9,12 +9,12 @@
     </head>
     <body>
         <div class="row">
-        <h1 class="col offset-s3 s6 center-align">TP 1</h1>
+        <h1 class="col offset-s3 s6 center-align">Inscription pour la sélection</h1>
         </div>
         <?php
         $nameRegex = '/^[A-ZÉÈÀÊÀÙÎÏÜË]{1}[a-zéèàêâùïüë]+[-]{0,}[A-ZÉÈÀÊÀÙÎÏÜË]{0,1}[a-zéèàêâùïüë]{0,}/';
-        $dateRegex = '/^(([0-2][0-9])|([3]{1}[0-1]{1}))[\/]{1}(([0][1-9])|([1]{1}[0-2]{1}))[\/]{1}([0-9]){4}$/';
-        $phoneRegex = '/[0]{1}[0-9]([\ ]{0,}[0-9][0-9]){4}/';
+        $dateRegex = //'/^(([0-2][0-9])|([3]{1}[0-1]{1}))[\/]{1}(([0][1-9])|([1]{1}[0-2]{1}))[\/]{1}([0-9]){4}$/';
+        $phoneRegex = '/^0[1-79]([\ ]{0,}[0-9][0-9]){4}/';
         $emailRegex = '/[a-zA-Z0-9_\-.]{1,}[@]{1}[a-zA-Z0-9_\-.]{1,}[.]{1}[a-zA-Z]{1,}/';
         $qualificationRegex = '/[A-Z]{1}[a-z]{1,}([\ +0-9]){0,}/';
         $jobCenterRegex = '/^[0-9]{7}[A-Z]{1}$/';
